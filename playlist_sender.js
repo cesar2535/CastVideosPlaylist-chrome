@@ -66,7 +66,7 @@ if (!chrome.cast || !chrome.cast.isAvailable) {
  * initialization
  */
 function initializeCastApi() {
-  var applicationID = 'AA1E4130';
+  var applicationID = '8C87F1F3';
   var sessionRequest = new chrome.cast.SessionRequest(applicationID);
   var apiConfig = new chrome.cast.ApiConfig(sessionRequest,
     sessionListener,
