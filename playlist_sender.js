@@ -43,6 +43,8 @@ var mediaThumbs = [
            'images/google-io-2011.jpg'];
 var currentMediaIndex = 0;
 var timer = null;
+var namespace = 'urn:x-cast:com.google.cast.sample.playlist';
+
 
 function createTimer() {
   timer = setInterval(updateCurrentTime.bind(this), 1000);
@@ -61,6 +63,11 @@ function clearTimer() {
 if (!chrome.cast || !chrome.cast.isAvailable) {
   setTimeout(initializeCastApi, 1000);
 }
+
+function receiverMessage(namespace, message) {
+  appendMessage("receiverMessage: "+namespace+", "+JSON.parse(message));
+  console.log("receiverMessage: "+namespace+", "+JSON.parse(message));
+};
 
 /**
  * initialization
@@ -120,6 +127,7 @@ function sessionListener(e) {
   }
   session.addMediaListener(
       onMediaDiscovered.bind(this, 'addMediaListener'));
+  session.addMessageListener(namespace, receiverMessage);
   session.addUpdateListener(sessionUpdateListener.bind(this));  
 }
 
