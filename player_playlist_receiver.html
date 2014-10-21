@@ -125,6 +125,7 @@ This shows a very simple receiver app to show how you could support video playli
                 console.log('onLoad ' + JSON.stringify(event));
                 // Initialize the playlist with the custom data
                 // playlist items
+                playlistMessageBus.broadcast('Hello');
                 playlist = event.data.customData.playlist;
                 currentVideoIndex = -1;
                 // Call the original load handler
