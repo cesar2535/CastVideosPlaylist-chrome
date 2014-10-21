@@ -58,6 +58,7 @@ This shows a very simple receiver app to show how you could support video playli
             // Create a message handler for the custome namespace channel
             playlistMessageBus.onMessage = function(event) {
                 console.log('Playlist message: ' + JSON.stringify(event));
+                playlistMessageBus.broadcast(JSON.stringify(event));
                 // Handle the ADD command from the sender
                 // Other commands could also be supported
                 if (event.data.type == 'ADD') {
@@ -125,7 +126,6 @@ This shows a very simple receiver app to show how you could support video playli
                 console.log('onLoad ' + JSON.stringify(event));
                 // Initialize the playlist with the custom data
                 // playlist items
-                playlistMessageBus.broadcast('Hello');
                 playlist = event.data.customData.playlist;
                 currentVideoIndex = -1;
                 // Call the original load handler
