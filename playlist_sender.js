@@ -73,7 +73,8 @@ function receiverMessage(namespace, message) {
  * initialization
  */
 function initializeCastApi() {
-  var applicationID = '8A89B29F';
+  var applicationID = chrome.cast.media.DEFAULT_MEDIA_RECEIVER_APP_ID;
+  // var applicationID = '8A89B29F';
   var sessionRequest = new chrome.cast.SessionRequest(applicationID);
   var apiConfig = new chrome.cast.ApiConfig(sessionRequest,
     sessionListener,
